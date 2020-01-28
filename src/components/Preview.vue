@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div id="preview-body" :style="`--primary-color: ${primaryColor}; --foreground-color: ${foregroundColor}; --background-color: ${backgroundColor};`">
     <article>
       <h1>{{ title }}</h1>
-      <div>{{ details }}</div>
+      <div v-html="details"></div>
     </article>
   </div>
 </template>
@@ -19,18 +19,42 @@ export default {
     details() {
       return store.state.details
     },
-    email() {
-      return store.state.email
+    primaryColor() {
+      return store.state.colors.primary
+    },
+    foregroundColor() {
+      return store.state.colors.foreground
+    },
+    backgroundColor() {
+      return store.state.colors.background
     }
   }
 }
 </script>
 
-<style scoped>
-body { text-align: center; padding: 150px; }
-h1 { font-size: 50px; }
-body { font: 20px Helvetica, sans-serif; color: #333; }
-article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-a { color: #dc8100; text-decoration: none; }
-a:hover { color: #333; text-decoration: none; }
+<style lang="scss" scoped>
+#preview-body {
+  text-align: center;
+  padding: 150px;
+  font: 20px Helvetica, sans-serif;
+  color: var(--foreground-color);
+  background: var(--background-color);
+
+  h1 {
+    font-size: 50px;
+    color: var(--primary-color);
+  }
+
+  article {
+    display: block;
+    text-align: left;
+    width: 650px;
+    margin: 0 auto;
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+}
 </style>

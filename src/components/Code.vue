@@ -7,12 +7,11 @@
           &lt;head&gt;
             &lt;title&gt;Site Maintenance&lt;/title&gt;
             &lt;style&gt;
-            body { text-align: center; padding: 150px; }
+            body { text-align: center; padding: 150px; font: 20px Helvetica, sans-serif; background: {{ backgroundColor }}; color: {{ foregroundColor }}; }
             h1 { font-size: 50px; }
-            body { font: 20px Helvetica, sans-serif; color: #333; }
             article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-            a { color: #dc8100; text-decoration: none; }
-            a:hover { color: #333; text-decoration: none; }
+            a { color: {{ primaryColor }}; text-decoration: none; }
+            a:hover { color: {{ foregroundColor }}; text-decoration: none; }
             &lt;/style&gt;
           &lt;/head&gt;
           &lt;body&gt;
@@ -39,12 +38,18 @@ export default {
     details() {
       return store.state.details
     },
-    email() {
-      return store.state.email
+    primaryColor() {
+      return store.state.colors.primary
+    },
+    foregroundColor() {
+      return store.state.colors.foreground
+    },
+    backgroundColor() {
+      return store.state.colors.background
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>
